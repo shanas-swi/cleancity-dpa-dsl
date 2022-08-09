@@ -13,7 +13,7 @@ object DPACleanCityProject : Project({
 })
 
 object Build : BuildType({
-    name = "Build-Sample-1"
+    name = "Build-Sample-2"
 
     vcs {
         root(DslContext.settingsRoot)
@@ -35,7 +35,7 @@ object DpaInstallers : Project({
 })
 
 object DpaInstallers_Build : BuildType({
-    name = "Build-Sample2-1"
+    name = "Build-Sample2-2"
 
     vcs {
         root(DpaGitConnector)
@@ -52,14 +52,15 @@ object DpaGitConnector : GitVcsRoot({
     url = "https://github.com/solarwinds/dpa.git"
     branch = "refs/heads/master"
     branchSpec = "refs/heads/*"
-//    authMethod = uploadedKey {
+    authMethod = uploadedKey {
 //        uploadedKey = connectorsSshKeyName()
-//        uploadedKey = "TeamCity Access to GitHub"
-//    }
-    authMethod = password {
-        userName = "shanas-swi"
-        password = "credentialsJSON:bf61d350-be02-4443-bc11-aea55db613a2"
+        uploadedKey = "TeamCity Access to GitHub"
     }
+    param("useAlternates", "true")
+//    authMethod = password {
+//        userName = "shanas-swi"
+//        password = "credentialsJSON:bf61d350-be02-4443-bc11-aea55db613a2"
+//    }
 })
 
 
@@ -72,7 +73,7 @@ object DpaToolsAndLibraries : Project({
 })
 
 object DpaToolsAndLibraries_Build : BuildType({
-    name = "Build-Sample3-1"
+    name = "Build-Sample3-2"
 
     vcs {
         root(DpaTestRuntimeGitConnector)
@@ -89,12 +90,13 @@ object DpaTestRuntimeGitConnector : GitVcsRoot({
     url = "https://github.com/solarwinds/dpa-test-runtime.git"
     branch = "refs/heads/master"
     branchSpec = "refs/heads/*"
-//    authMethod = uploadedKey {
+    authMethod = uploadedKey {
 //        uploadedKey = connectorsSshKeyName()
-//        uploadedKey = "TeamCity Access to GitHub"
-//    }
-    authMethod = password {
-        userName = "shanas-swi"
-        password = "credentialsJSON:bf61d350-be02-4443-bc11-aea55db613a2"
+        uploadedKey = "TeamCity Access to GitHub"
     }
+    param("useAlternates", "true")
+//    authMethod = password {
+//        userName = "shanas-swi"
+//        password = "credentialsJSON:bf61d350-be02-4443-bc11-aea55db613a2"
+//    }
 })
