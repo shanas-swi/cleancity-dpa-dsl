@@ -8,35 +8,10 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 
 object DpaCleanCityProject : Project({
 
-    buildType(_Self.buildTypes.ParentBuildConfiguration)
-
     subProject(DpaInstallersProject)
     subProject(DpaToolsAndLibrariesProject)
 })
 
-
-
-
-object DpaToolsAndLibraries : Project({
-    name = "DPA Tools and Libraries"
-
-    vcsRoot(DpaTestRuntimeGitConnector)
-
-    buildType(DpaToolsAndLibraries_Build)
-})
-
-object DpaToolsAndLibraries_Build : BuildType({
-    name = "Build-Sample3-4"
-
-    vcs {
-        root(DpaTestRuntimeGitConnector)
-    }
-
-    triggers {
-        vcs {
-        }
-    }
-})
 
 object DpaTestRuntimeGitConnector : GitVcsRoot({
     name = "DPA Test Runtime (github) master"

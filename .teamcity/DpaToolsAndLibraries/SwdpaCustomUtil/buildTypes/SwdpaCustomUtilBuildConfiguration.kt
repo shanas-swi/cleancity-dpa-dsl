@@ -8,7 +8,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 
 object SwdpaCustomUtilBuildConfiguration : BuildType({
-    name = "CleanCity_SwdpaCustomutil"
+    name = "SwdpaCustomUtil-Build"
     description = "Build Dpa Custom Util build configuration"
     val temporaryDir = "temp"
 

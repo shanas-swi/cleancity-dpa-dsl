@@ -6,7 +6,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 object SwdpaCustomUtilConnector : GitVcsRoot({
     name = "DPA Custom Util (github) master"
     url = "https://github.com/solarwinds/swdpa-customutil.git"
-    branch = "refs/heads/master"
+    branch = "refs/heads/main"
     branchSpec = "refs/heads/*"
 //    authMethod = uploadedKey {
 //        uploadedKey = connectorsSshKeyName()
