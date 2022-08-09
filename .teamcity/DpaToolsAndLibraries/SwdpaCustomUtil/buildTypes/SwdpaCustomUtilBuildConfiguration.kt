@@ -51,4 +51,10 @@ object SwdpaCustomUtilBuildConfiguration : BuildType({
         }
     }
 
+    requirements {
+        doesNotEqual("system.agent.name", "BRN-VSR-BLD-151", "RQ_194")
+        exists("teamcity.agent.jvm.java.home", "RQ_803")
+        equals("teamcity.agent.jvm.os.name", "Linux", "RQ_844")
+    }
+
 })
