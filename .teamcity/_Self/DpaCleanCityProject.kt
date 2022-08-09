@@ -1,5 +1,7 @@
 package _Self
 
+import DpaInstallers.DpaInstallersProject
+import DpaToolsAndLibraries.DpaToolsAndLibrariesProject
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
@@ -8,8 +10,8 @@ object DpaCleanCityProject : Project({
 
     buildType(_Self.buildTypes.ParentBuildConfiguration)
 
-    subProject(DpaInstallers.DpaInstallersProject)
-    subProject(DpaToolsAndLibraries)
+    subProject(DpaInstallersProject)
+    subProject(DpaToolsAndLibrariesProject)
 })
 
 
