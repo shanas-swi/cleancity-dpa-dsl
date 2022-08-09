@@ -51,7 +51,7 @@ object Build : BuildType({
 object DpaInstallers : Project({
     name = "DPA Installers"
 
-    vcsRoot(DpaInstallers_HttpsGithubComSolarwindsDpaGitRefsHeadsMaster)
+    vcsRoot(DpaGitConnector)
 
     buildType(DpaInstallers_Build)
 })
@@ -60,7 +60,7 @@ object DpaInstallers_Build : BuildType({
     name = "Build"
 
     vcs {
-        root(DpaInstallers_HttpsGithubComSolarwindsDpaGitRefsHeadsMaster)
+        root(DpaGitConnector)
     }
 
     triggers {
@@ -69,14 +69,14 @@ object DpaInstallers_Build : BuildType({
     }
 })
 
-object DpaInstallers_HttpsGithubComSolarwindsDpaGitRefsHeadsMaster : GitVcsRoot({
-    name = "https://github.com/solarwinds/dpa.git#refs/heads/master"
+object DpaGitConnector : GitVcsRoot({
+    name = "DPA (github) master"
     url = "https://github.com/solarwinds/dpa.git"
     branch = "refs/heads/master"
     branchSpec = "refs/heads/*"
-    authMethod = password {
-        userName = "shanas-swi"
-        password = "credentialsJSON:bf61d350-be02-4443-bc11-aea55db613a2"
+    authMethod = uploadedKey {
+//        uploadedKey = connectorsSshKeyName()
+        uploadedKey = "TeamCity Access to GitHub"
     }
 })
 
@@ -84,7 +84,7 @@ object DpaInstallers_HttpsGithubComSolarwindsDpaGitRefsHeadsMaster : GitVcsRoot(
 object DpaToolsAndLibraries : Project({
     name = "DPA Tools and Libraries"
 
-    vcsRoot(DpaToolsAndLibraries_HttpsGithubComSolarwindsDpaTestRuntimeGitRefsHeadsMaster)
+    vcsRoot(DpaTestRuntimeGitConnector)
 
     buildType(DpaToolsAndLibraries_Build)
 })
@@ -93,7 +93,7 @@ object DpaToolsAndLibraries_Build : BuildType({
     name = "Build"
 
     vcs {
-        root(DpaToolsAndLibraries_HttpsGithubComSolarwindsDpaTestRuntimeGitRefsHeadsMaster)
+        root(DpaTestRuntimeGitConnector)
     }
 
     triggers {
@@ -102,13 +102,13 @@ object DpaToolsAndLibraries_Build : BuildType({
     }
 })
 
-object DpaToolsAndLibraries_HttpsGithubComSolarwindsDpaTestRuntimeGitRefsHeadsMaster : GitVcsRoot({
-    name = "https://github.com/solarwinds/dpa-test-runtime.git#refs/heads/master"
+object DpaTestRuntimeGitConnector : GitVcsRoot({
+    name = "DPA Test Runtime (github) master"
     url = "https://github.com/solarwinds/dpa-test-runtime.git"
     branch = "refs/heads/master"
     branchSpec = "refs/heads/*"
-    authMethod = password {
-        userName = "shanas-swi"
-        password = "credentialsJSON:bf61d350-be02-4443-bc11-aea55db613a2"
+    authMethod = uploadedKey {
+//        uploadedKey = connectorsSshKeyName()
+        uploadedKey = "TeamCity Access to GitHub"
     }
 })
