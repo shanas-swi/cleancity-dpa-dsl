@@ -12,10 +12,8 @@ object DpaBuildConfiguration : BuildType({
     name = "DPA - Build Number"
     description = "Generate common build number and identify branch"
 
-
     vcs {
-        root(DpaInstallers.vcsRoots.DpaGitConnector)
-
+        root(DpaGitConnector)
         checkoutMode = CheckoutMode.ON_AGENT
         cleanCheckout = true
     }
@@ -38,7 +36,4 @@ object DpaBuildConfiguration : BuildType({
             param("org.jfrog.artifactory.selectedDeployableServer.deployerUsername", "jan.cupa")
         }
     }
-
-
-
 })
