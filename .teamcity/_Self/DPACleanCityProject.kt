@@ -5,16 +5,15 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 
 object DPACleanCityProject : Project({
-    name = "DPA - CleanCity"
 
-    buildType(DPACleanCityProject_Build)
+    buildType(Build)
 
     subProject(DpaInstallers)
     subProject(DpaToolsAndLibraries)
 })
 
-object DPACleanCityProject_Build : BuildType({
-    name = "Build-Sample"
+object Build : BuildType({
+    name = "Build-Sample-1"
 
     vcs {
         root(DslContext.settingsRoot)
@@ -36,7 +35,7 @@ object DpaInstallers : Project({
 })
 
 object DpaInstallers_Build : BuildType({
-    name = "Build"
+    name = "Build-Sample2-1"
 
     vcs {
         root(DpaGitConnector)
@@ -50,14 +49,16 @@ object DpaInstallers_Build : BuildType({
 
 object DpaGitConnector : GitVcsRoot({
     name = "DPA (github) master"
-    pollInterval = 120
-    url = "git@github.com:solarwinds/dpa.git"
+    url = "https://github.com/solarwinds/dpa.git"
     branch = "refs/heads/master"
     branchSpec = "refs/heads/*"
-    checkoutPolicy = AgentCheckoutPolicy.USE_MIRRORS
-    authMethod = uploadedKey {
+//    authMethod = uploadedKey {
 //        uploadedKey = connectorsSshKeyName()
-        uploadedKey = "TeamCity Access to GitHub"
+//        uploadedKey = "TeamCity Access to GitHub"
+//    }
+    authMethod = password {
+        userName = "shanas-swi"
+        password = "credentialsJSON:bf61d350-be02-4443-bc11-aea55db613a2"
     }
 })
 
@@ -65,16 +66,16 @@ object DpaGitConnector : GitVcsRoot({
 object DpaToolsAndLibraries : Project({
     name = "DPA Tools and Libraries"
 
-    vcsRoot(DpaGitTestRuntimeConnector)
+    vcsRoot(DpaTestRuntimeGitConnector)
 
     buildType(DpaToolsAndLibraries_Build)
 })
 
 object DpaToolsAndLibraries_Build : BuildType({
-    name = "Build"
+    name = "Build-Sample3-1"
 
     vcs {
-        root(DpaGitTestRuntimeConnector)
+        root(DpaTestRuntimeGitConnector)
     }
 
     triggers {
@@ -83,14 +84,17 @@ object DpaToolsAndLibraries_Build : BuildType({
     }
 })
 
-object DpaGitTestRuntimeConnector : GitVcsRoot({
+object DpaTestRuntimeGitConnector : GitVcsRoot({
     name = "DPA Test Runtime (github) master"
     url = "https://github.com/solarwinds/dpa-test-runtime.git"
     branch = "refs/heads/master"
     branchSpec = "refs/heads/*"
-    checkoutPolicy = AgentCheckoutPolicy.USE_MIRRORS
-    authMethod = uploadedKey {
+//    authMethod = uploadedKey {
 //        uploadedKey = connectorsSshKeyName()
-        uploadedKey = "TeamCity Access to GitHub"
+//        uploadedKey = "TeamCity Access to GitHub"
+//    }
+    authMethod = password {
+        userName = "shanas-swi"
+        password = "credentialsJSON:bf61d350-be02-4443-bc11-aea55db613a2"
     }
 })
