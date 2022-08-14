@@ -20,7 +20,7 @@ object SwdpaCustomUtilBuildConfiguration : BuildType({
     }
     steps {
         maven {
-            name = "clean install"
+            name = "Build Jars"
             goals = "clean install"
             mavenVersion = bundled_3_6()
             userSettingsSelection = "dev-artifactory.xml"
@@ -33,8 +33,8 @@ object SwdpaCustomUtilBuildConfiguration : BuildType({
             param("org.jfrog.artifactory.selectedDeployableServer.targetRepo", "maven-libs-release")
         }
         script {
-            name = "maven version"
-            scriptContent = "mvn --version"
+            name = "print version"
+            scriptContent = "echo %dpa.mvn.snapshot.version%"
             param("org.jfrog.artifactory.selectedDeployableServer.downloadSpecSource", "Job configuration")
             param("org.jfrog.artifactory.selectedDeployableServer.useSpecs", "false")
             param("org.jfrog.artifactory.selectedDeployableServer.uploadSpecSource", "Job configuration")
