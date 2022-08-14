@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <project>
   <modelVersion>4.0.0</modelVersion>
-  <name>Dpa_DpaCleanCity Config DSL Script</name>
-  <groupId>Dpa_DpaCleanCity</groupId>
-  <artifactId>Dpa_DpaCleanCity_Dsl</artifactId>
+  <name>Dpa_DpaDevCleanCity Config DSL Script</name>
+  <groupId>Dpa_DpaDevCleanCity</groupId>
+  <artifactId>Dpa_DpaDevCleanCity_Dsl</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <parent>

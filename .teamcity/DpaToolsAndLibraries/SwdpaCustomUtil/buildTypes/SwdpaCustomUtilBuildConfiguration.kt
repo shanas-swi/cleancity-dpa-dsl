@@ -23,7 +23,7 @@ object SwdpaCustomUtilBuildConfiguration : BuildType({
             name = "clean install"
             goals = "clean install"
             mavenVersion = bundled_3_6()
-            userSettingsSelection = "settings.xml"
+            userSettingsSelection = "dev-artifactory.xml"
             runnerArgs = "-U"
             param("org.jfrog.artifactory.selectedDeployableServer.publishBuildInfo", "true")
             param("org.jfrog.artifactory.selectedDeployableServer.defaultModuleVersionConfiguration", "GLOBAL")
